@@ -3,11 +3,20 @@ import java.awt.*;
 
 public class GameFrame extends JFrame {
 
+    GameState gameState;
     JLabel currentPlayerLabel = new JLabel();
+    JButton[] board;
+
+    //For simplicity of this exercise,
+    // 1 == RED and 2 == YELLOW, and red will always start
+    int currentTurn = 1;
 
 
     public GameFrame(int gridSize, int winLength){
 
+        //Intialise the state of the game
+        gameState = new GameState(gridSize, winLength);
+        board = gameState.initial_board();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Connect Four");
@@ -24,7 +33,7 @@ public class GameFrame extends JFrame {
         //The 'board' is implemented using JButtons
         for ( int i = 0 ; i < gridSize*gridSize ; i++ )
         {
-            mainPanel.add(new JButton());
+            mainPanel.add(board[i]);
 
         }
         this.pack();
