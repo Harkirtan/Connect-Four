@@ -2,8 +2,8 @@ import javax.swing.*;
 
 public class StartFrame extends JFrame {
 
-    private int gridSize;
-    private int winRowLength;
+    private int chosenGridSize;
+    private int chosenWinRowLength;
 
     public StartFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,7 +36,7 @@ public class StartFrame extends JFrame {
         confirmSettingsButton.addActionListener(e -> {
             if(checkValidityOfSettings(gridSizeInput.getText(), winningLengthInput.getText())){
                 //Once settings have been validated, then launch the game frame and close this settings screen
-                new GameFrame(gridSize, winRowLength);
+                new GameFrame(chosenGridSize, chosenWinRowLength);
                 StartFrame.this.dispose();
             }
         });
@@ -49,23 +49,24 @@ public class StartFrame extends JFrame {
     private Boolean checkValidityOfSettings(String gridSizeText, String rowLengthText){
         //Check if user typed in a number or string and inform accordingly
         try {
-            gridSize = Integer.parseInt(gridSizeText);
-            winRowLength = Integer.parseInt(rowLengthText);
+            chosenGridSize = Integer.parseInt(gridSizeText);
+            chosenWinRowLength = Integer.parseInt(rowLengthText);
         } catch (NumberFormatException e) {
             System.out.println("Error: Both inputs must be valid integers");
             return false;
         }
 
-        //To make the game plausible, remove case where the winning length is greater than gridsize
-        if(winRowLength > gridSize){
+        //To make the game plausible, remove case where the winning length is greater than grid size
+        if(chosenWinRowLength > chosenGridSize){
             System.out.println("Error: Winning row length greater than size of grid");
             return false;
         } else {
-            System.out.println("Selected Grid Size: " + gridSize + " Winning Row Length: " + winRowLength);
+            System.out.println("Selected Grid Size: " + chosenGridSize + " Winning Row Length: " + chosenWinRowLength);
             return true;
         }
     }
-    //Run this JFrame
+
+    //Main function
     public static void main(String[] args)
     {
         new StartFrame();
