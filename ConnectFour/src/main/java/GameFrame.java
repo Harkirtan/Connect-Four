@@ -32,7 +32,7 @@ public class GameFrame extends JFrame implements ActionListener {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout( new GridLayout(gridSize,gridSize) );
         this.getContentPane().add(mainPanel, BorderLayout.CENTER);
-        //The 'board' is implemented using JButtons
+        //The 'board' is implemented using JButtons with action listeners
         for ( int i = 0 ; i < gridSize*gridSize ; i++ )
         {
             mainPanel.add(board[i]);
@@ -43,7 +43,6 @@ public class GameFrame extends JFrame implements ActionListener {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -72,6 +71,13 @@ public class GameFrame extends JFrame implements ActionListener {
                             currentPlayerLabel.setText("RED PLAYER: PLACE RED TOKEN");
                             GameFrame.this.getRootPane().setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.RED));
                             currentTurn = 1;
+                        }
+                        //Check if a player has won after each move
+                        if (gameState.checkForWin(board)) {
+                            String winner = currentTurn == 2 ? "Red" : "Yellow";
+                            JOptionPane.showMessageDialog(this, winner + " Player Wins!");
+                            //Close game
+                            GameFrame.this.dispose();
                         }
                         //exit the loop once the token is placed
                         break;
