@@ -17,7 +17,7 @@ JUnit was chosen for its simplicity, ease of integration with Maven, and the abi
 
 - In an IDE: Run StartFrame.java
 - Using Maven
-- Using JAR executable located in the out folder or [JAR LOCATION](ConnectFour\out\artifacts\ConnectFour_jar)
+- Using JAR executable located in the out folder at ConnectFour/out/artifacts/ConnectFour_jar
 
 
 ## Features Implemented
