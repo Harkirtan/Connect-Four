@@ -1,11 +1,11 @@
 import javax.swing.*;
 
-public class StartScreen  extends JFrame {
+public class StartFrame extends JFrame {
 
     private int gridSize;
     private int winRowLength;
 
-    public StartScreen() {
+    public StartFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Settings");
 
@@ -34,16 +34,40 @@ public class StartScreen  extends JFrame {
         JButton confirmSettingsButton = new JButton("Confirm settings");
         panel.add(confirmSettingsButton);
         confirmSettingsButton.addActionListener(e -> {
-
+            if(checkValidityOfSettings(gridSizeInput.getText(), winningLengthInput.getText())){
+                //Once settings have been validated, then launch the game frame and close this settings screen
+                new GameFrame(gridSize, winRowLength);
+                StartFrame.this.dispose();
+            }
         });
 
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
+
+    private Boolean checkValidityOfSettings(String gridSizeText, String rowLengthText){
+        //Check if user typed in a number or string and inform accordingly
+        try {
+            gridSize = Integer.parseInt(gridSizeText);
+            winRowLength = Integer.parseInt(rowLengthText);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Both inputs must be valid integers");
+            return false;
+        }
+
+        //To make the game plausible, remove case where the winning length is greater than gridsize
+        if(winRowLength > gridSize){
+            System.out.println("Error: Winning row length greater than size of grid");
+            return false;
+        } else {
+            System.out.println("Selected Grid Size: " + gridSize + " Winning Row Length: " + winRowLength);
+            return true;
+        }
+    }
     //Run this JFrame
     public static void main(String[] args)
     {
-        new StartScreen();
+        new StartFrame();
     }
 }
