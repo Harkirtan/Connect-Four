@@ -6,7 +6,7 @@ public class GameStateTest {
 
     private final GameState gameState= new GameState(5, 4);
 
-
+    //Test if the state array is being created correctly
     @Test
     public void testInitialState() {
         int[][] state = gameState.getState();
@@ -16,6 +16,7 @@ public class GameStateTest {
 
     }
 
+    //Test if adding tokens will update the array correctly
     @Test
     public void testUpdateState() {
         gameState.initialiseBoard();
@@ -35,6 +36,7 @@ public class GameStateTest {
         assertArrayEquals(expectedState, gameState.getState());
     }
 
+    //Test if win check returns false
     @Test
     public void testWinConditionFalse() {
         gameState.initialiseBoard();
@@ -45,6 +47,7 @@ public class GameStateTest {
         assertFalse(gameState.checkForWin());
     }
 
+    //Check if win check returns true
     @Test
     public void testWinConditionTrue() {
         gameState.initialiseBoard();

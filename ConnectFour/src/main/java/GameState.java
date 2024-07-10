@@ -110,7 +110,7 @@ public class GameState {
         return state;
     }
 
-    //Getter for grid state
+    //Getter for JButton board
     public JButton[] getBoard() {
         return board;
     }
