@@ -5,7 +5,7 @@
 I chose Java for this project due to its robustness, object-oriented nature, and widespread use. Additionally, as I am comfortable working in Java, I wanted to showcase that via this test. With simplicity in mind, I only created 3 classes and attempted to keep them as minimalistic as possible. 
 
 ### GUI: Java Swing (Optional)
-For the optional GUI component, I opted to use Swing, a part of the Java Foundation Classes (JFC). Swing is lightweight and therefore allowed me to develop a coherent solution to this test where I developed 2 windows (JFrames), one for the initial settings and one for the gameplay.
+For the GUI component, I opted to use Swing, a part of the Java Foundation Classes (JFC). Swing is lightweight and therefore allowed me to develop a coherent solution to this test where I developed 2 windows (JFrames), one for the initial settings and one for the gameplay.
 
 ### Build Tool: Maven
 Maven was chosen as the build tool to manage project dependencies, build processes, and plugins. It simplifies the project setup and ensures consistent project builds across different environments. 
@@ -18,6 +18,8 @@ JUnit was chosen for its simplicity, ease of integration with Maven, and the abi
 - In an IDE: Run StartFrame.java
 - Using Maven
 - Using JAR executable located in the out folder at ConnectFour/out/artifacts/ConnectFour_jar
+
+- Test files can be found at ConnectFour/src/test/java
 
 
 ## Features Implemented
